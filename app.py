@@ -6,34 +6,47 @@ import numpy as np
 import pandas as pd
 
 app=Flask(__name__)
-## Load the model
+## Charger le modèle
 model=pickle.load(open('ckd_model.pkl','rb'))
-
+scalar=pickle.load(open('data_scaling.pkl','rb'))
+# page principale
 @app.route('/')
 def home():
     return render_template('home.html')
-
+# page de prédiction 
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
-    data=request.get_json(force=True)
-    print(data)
-    features = np.array(data['features']).reshape(1, -1)
-    #data=int(np.array(list(data.values())).reshape(1,-1))
-    output=model.predict(features)
-    print(output[0])
-    return jsonify(output[0])
+    try:
+    
+        data = request.json['data']
+        print(data)
+        print(np.array(list(data.values())))
+        print((np.array(list(data.values())).reshape(1,-1)))
+        output=model.predict(np.array(list(data.values())).reshape(1,-1))
+        print(output)
+        if (output[0]== 0):
+            print('La personne ne a pas le CKD')
+        else:
+            print('La personne  a le CKD')
+        return jsonify(int(output[0]))
 
-#@app.route('/predict',methods=['POST'])
-#def predict():
-    #data=[float(x) for x in request.form.values()]
+    except Exception as e:
+        return jsonify({'error': str(e)})
+
+@app.route('/predict',methods=['POST'])
+def predict():
+    data=[float(x) for x in request.form.values()]
+    outPut=model.predict(np.array((data)).reshape(1,-1))
     #final_input=model.transform(np.array(data).reshape(1,-1))
-    #print(final_input)
+    print(outPut)
     #output=Classmodel.predict(final_input)[0]
-    #return render_template("home.html",prediction_text="The House price prediction is {}".format(output))
+    return render_template("home.html",prediction_text="L'état de patient(e) {}".format(outPut))
 
 
 
 if __name__=="__main__":
     app.run(debug=True)
-   
-     
+
+
+
+

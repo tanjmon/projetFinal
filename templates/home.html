@@ -1,1 +1,59 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>prédiction de la maladie rénale chronique</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="âge" placeholder="âge" required="required" /><br>
+    	<input type="text" name="pression_sang" placeholder="pression_sang" required="required" /><br>
+        <input type="text" name="gravité_spécifique" placeholder="gravité_spécifique" required="required" /><br>
+        <input type="text" name="albumine" placeholder="albumine" required="required" /><br>
+        <input type="text" name="sucre" placeholder="sucre" required="required" /><br>
+        <input type="text" name="cellules_rouges" placeholder="cellules_rouges" required="required" /><br>
+        <input type="text" name="pus_cellule" placeholder="pus_cellule" required="required" /><br>
+        <input type="text" name="pus_amas_cellules" placeholder="pus_amas_cellules" required="required" /><br>
+        <input type="text" name="bactéries" placeholder="bactéries" required="required" /><br>
+        <input type="text" name="sang_glucose_varieté" placeholder="sang_glucose_varieté" required="required" /><br>
+        <input type="text" name="blood_urée" placeholder="blood_urée" required="required" /><br>
+        <input type="text" name="créatinine_sérique" placeholder="créatinine_sérique" required="required" /><br>
+        <input type="text" name="sodium" placeholder="sodium" required="required" /><br>
+        <input type="text" name="potassium" placeholder="potassium" required="required" /><br>
+        <input type="text" name="hémoglobine" placeholder="hémoglobine" required="required" /><br>
+        <input type="text" name="volume_concentré_cellules" placeholder="volume_concentré_cellules" required="required" /><br>
+        <input type="text" name="nombre_globules_blancs" placeholder="nombre_globules_blancs" required="required" /><br>
+        <input type="text" name="nombre_globules_rouges" placeholder="nombre_globules_rouges" required="required" /><br>
+        <input type="text" name="hypertension" placeholder="hypertension" required="required" /><br>
+        <input type="text" name="diabète_mellitus" placeholder="diabète_mellitus" required="required" /><br>
+        <input type="text" name="maladie_artérielle_coronaire" placeholder="maladie_artérielle_coronaire" required="required" /><br>
+        <input type="text" name="appétit" placeholder="appétit" required="required" /><br>
+        <input type="text" name="œdème_péda" placeholder="œdème_péda" required="required" /><br>
+        <input type="text" name="anémie" placeholder="anémie" required="required" /><br>
+
+       
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+  
+   
+ </div>
+ {{prediction_text}}
+
+</body>
+</html>
