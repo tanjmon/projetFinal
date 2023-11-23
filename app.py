@@ -40,7 +40,7 @@ def predict():
     #final_input=model.transform(np.array(data).reshape(1,-1))
     print(outPut)
     #output=Classmodel.predict(final_input)[0]
-    return render_template("home.html",prediction_text="L'état de patient(e) {}".format(outPut))
+    return render_template("home.html",prediction_text="L'état de patient(e): {}".format(outPut))
 
 
 

@@ -14,7 +14,7 @@
 
 <body>
  <div class="login">
-	<h1>prédiction de la maladie rénale chronique</h1>
+	<h1>prédiction de la maladie rénale chronique (CKD : chronic kidney disease )</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
@@ -42,7 +42,8 @@
         <input type="text" name="appétit" placeholder="appétit" required="required" /><br>
         <input type="text" name="œdème_péda" placeholder="œdème_péda" required="required" /><br>
         <input type="text" name="anémie" placeholder="anémie" required="required" /><br>
-
+        <h3>[0]: La personne n'a pas le CKD</h3>
+        <h3>[1]: La personne a  le CKD</h3>
        
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
